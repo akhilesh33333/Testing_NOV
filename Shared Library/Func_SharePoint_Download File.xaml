@@ -1,0 +1,219 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Func_SharePoint_Download_File" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:ho="clr-namespace:HP.OAuth;assembly=HP.OAuth.Activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:msc="clr-namespace:Microsoft.SharePoint.Client;assembly=Microsoft.SharePoint.Client" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:Sharepoint;assembly=Sharepoint" xmlns:s1="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:stt="clr-namespace:System.Threading.Tasks;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_TeamName" Type="InArgument(x:String)" />
+    <x:Property Name="in_FolderName" Type="InArgument(x:String)" />
+    <x:Property Name="in_URL" Type="InArgument(x:String)" />
+    <x:Property Name="in_FileName" Type="InArgument(x:String)" />
+    <x:Property Name="in_ClientID" Type="InArgument(x:String)" />
+    <x:Property Name="in_ClientSecret" Type="InArgument(x:Object)" />
+    <x:Property Name="in_IsSites" Type="InArgument(x:Boolean)" />
+    <x:Property Name="in_LocalDownloadPath" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1406,3300</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Func_SharePoint_Download_File_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="46">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Threading.Tasks</x:String>
+      <x:String>Microsoft.SharePoint.Client</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>Sharepoint</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>OfficeDevPnP.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>System.Threading.Tasks.Extensions</AssemblyReference>
+      <AssemblyReference>Microsoft.SharePoint.Client.Runtime.Portable</AssemblyReference>
+      <AssemblyReference>Microsoft.SharePoint.Client</AssemblyReference>
+      <AssemblyReference>Microsoft.SharePoint.Client.Runtime</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>Sharepoint</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Func_SharePoint_Download_File 1" sap:VirtualizedContainerService.HintSize="631,3235" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="sharePointURL" />
+      <Variable x:TypeArguments="stt:Task(msc:ClientContext)" Name="sharePointContext" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message 2" sap:VirtualizedContainerService.HintSize="569,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;STARTED - Func_SharePoint_Download_File&quot;]" />
+    <If Condition="[In_IsSites]" DisplayName="If 3" sap:VirtualizedContainerService.HintSize="569,220" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Then>
+        <Assign DisplayName="Assign 4" sap:VirtualizedContainerService.HintSize="262,61" sap2010:WorkflowViewState.IdRef="Assign_1">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[sharePointURL]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[In_URL + "/sites/" + In_TeamName]</InArgument>
+          </Assign.Value>
+        </Assign>
+      </If.Then>
+      <If.Else>
+        <Assign DisplayName="Assign 5" sap:VirtualizedContainerService.HintSize="262,61" sap2010:WorkflowViewState.IdRef="Assign_2">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[sharePointURL]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[In_URL + "/teams/" + In_TeamName]</InArgument>
+          </Assign.Value>
+        </Assign>
+      </If.Else>
+    </If>
+    <ui:LogMessage DisplayName="Log Message 6" sap:VirtualizedContainerService.HintSize="569,92" sap2010:WorkflowViewState.IdRef="LogMessage_3" Message="[&quot;Accessing SharePoint URL [&quot; + sharePointURL + &quot;]&quot;]" />
+    <ui:RetryScope DisplayName="Retry Scope 7" sap:VirtualizedContainerService.HintSize="569,472" sap2010:WorkflowViewState.IdRef="RetryScope_1">
+      <ui:RetryScope.ActivityBody>
+        <ActivityAction>
+          <Sequence DisplayName="Action 8" sap:VirtualizedContainerService.HintSize="400,297" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ho:GetSharePointContext_Silent ClientId="[In_ClientID]" ClientSecret="[New system.Net.NetworkCredential(String.Empty,ctype(In_ClientSecret,system.Security.SecureString)).Password]" DisplayName="GetSharePointContext Silent" sap:VirtualizedContainerService.HintSize="338,186" sap2010:WorkflowViewState.IdRef="GetSharePointContext_Silent_1" Result="[sharePointContext]" SharePointURL="[sharePointURL]" />
+          </Sequence>
+        </ActivityAction>
+      </ui:RetryScope.ActivityBody>
+      <ui:RetryScope.Condition>
+        <ActivityFunc x:TypeArguments="x:Boolean" />
+      </ui:RetryScope.Condition>
+    </ui:RetryScope>
+    <If Condition="[Directory.Exists(In_LocalDownloadPath)]" DisplayName="If 9" sap:VirtualizedContainerService.HintSize="569,239" sap2010:WorkflowViewState.IdRef="If_2">
+      <If.Else>
+        <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create directory 10" sap:VirtualizedContainerService.HintSize="334,80" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[In_LocalDownloadPath]" />
+      </If.Else>
+    </If>
+    <ui:LogMessage DisplayName="Log message 11" sap:VirtualizedContainerService.HintSize="569,92" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Downloading file [&quot; + In_FileName + &quot;] from folder [&quot; + In_FolderName + &quot;]&quot;]" />
+    <ui:LogMessage DisplayName="Log Message 12" sap:VirtualizedContainerService.HintSize="569,92" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;In_Foldername: &quot;+In_Foldername]" />
+    <ui:LogMessage DisplayName="Log Message 13" sap:VirtualizedContainerService.HintSize="569,92" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;In_LocalDownloadPath: &quot;+In_LocalDownloadPath]" />
+    <ui:LogMessage DisplayName="Log Message 14" sap:VirtualizedContainerService.HintSize="569,92" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;In_URL: &quot;+In_URL]" />
+    <ui:LogMessage DisplayName="Log Message 15" sap:VirtualizedContainerService.HintSize="569,92" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Info" Message="[&quot;In_TeamName: &quot;+In_TeamName]" />
+    <ui:LogMessage DisplayName="Log Message 16" sap:VirtualizedContainerService.HintSize="569,92" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info" Message="[&quot;In_FileName: &quot;+In_FileName]" />
+    <TryCatch DisplayName="Try catch upload 17" sap:VirtualizedContainerService.HintSize="569,885" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <TryCatch.Try>
+        <ui:RetryScope DisplayName="Retry scope for Download SP" sap:VirtualizedContainerService.HintSize="442,657" sap2010:WorkflowViewState.IdRef="RetryScope_2" NumberOfRetries="3" RetryInterval="00:00:30">
+          <ui:RetryScope.ActivityBody>
+            <ActivityAction>
+              <Sequence DisplayName="Sequence 18" sap:VirtualizedContainerService.HintSize="400,482" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="ss:SecureString" Name="Password" />
+                </Sequence.Variables>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <s:DownloadFile ClinetContext="[sharepointContext.Result]" DisplayName="Download file 19" FileName="[In_FileName]" FolderName="[In_FolderName]" sap:VirtualizedContainerService.HintSize="338,239" sap2010:WorkflowViewState.IdRef="DownloadFile_1" LocalFolderPath="[In_LocalDownloadPath]" Password="[Password]" SharepointURL="[in_URL]" TeamName="[in_TeamName]">
+                  <s:DownloadFile.Username>
+                    <InArgument x:TypeArguments="x:String">
+                      <Literal x:TypeArguments="x:String" Value="" />
+                    </InArgument>
+                  </s:DownloadFile.Username>
+                </s:DownloadFile>
+                <ui:LogMessage DisplayName="Log message 20" sap:VirtualizedContainerService.HintSize="338,92" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Successfully downloaded file to [&quot; + In_LocalDownloadPath + &quot;\&quot; + In_FileName  + &quot;]&quot;]" />
+              </Sequence>
+            </ActivityAction>
+          </ui:RetryScope.ActivityBody>
+          <ui:RetryScope.Condition>
+            <ActivityFunc x:TypeArguments="x:Boolean" />
+          </ui:RetryScope.Condition>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:RetryScope>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s1:Exception" sap:VirtualizedContainerService.HintSize="446,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s1:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s1:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Sequence 21" sap:VirtualizedContainerService.HintSize="400,265" sap2010:WorkflowViewState.IdRef="Sequence_4">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:LogMessage DisplayName="Log message 22" sap:VirtualizedContainerService.HintSize="338,92" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Error" Message="[&quot;Failed to download from SP, &quot; + exception.Message+&quot; - &quot;+exception.Source]" />
+              <Rethrow DisplayName="Rethrow Exception" sap:VirtualizedContainerService.HintSize="338,25" sap2010:WorkflowViewState.IdRef="Rethrow_1" />
+            </Sequence>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+    <ui:LogMessage DisplayName="Log Message 21" sap:VirtualizedContainerService.HintSize="569,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;COMPLETED - Func_SharePoint_Download_File&quot;]" />
+  </Sequence>
+</Activity>

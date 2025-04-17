@@ -1,0 +1,272 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+   - "*"
+pr:
+  - master
+
+
+pool: $(Agentpool)
+
+variables:
+  - group: Pipeline_YAML_Variables
+
+parameters:
+
+
+- name: ProcessName
+  type: string
+  default: 'APJ_OrderBacklogManagement'
+  displayName: Name of the process from Project json file
+
+- name: PackageSavedPath
+  type: string
+  default: $(Deploysharepath)\APJ_OrderBacklogManagement\Drop\
+  displayName: Build Package Saving path
+
+- name: PROD_Asset_SavedPath
+  type: string
+  default: $(Deploysharepath)\APJ_OrderBacklogManagement\Data
+  displayName: PROD Asset Saving path
+
+- name: DevOrchestratorConnectionString
+  type: string
+  default: 'Development_Tenant_Orchestrator_Connection'
+  displayName: Name of the Dev orchestrator Connection String
+
+- name: ITGOrchestratorConnectionString
+  type: string
+  default: 'ITG_Commercial_Org_Tenant_Orchestrator_Connection'
+  displayName: Name of the ITG orchestrator Connection String
+
+- name: DevOrchestratorFolderName
+  type: string
+  default: 'Commercial Org'
+  displayName: Name the Folder where package needs to be deployed DEV environment
+
+- name: ITGOrchestratorFolderName
+  type: string
+  default: 'CO'
+  displayName: Name the package  where package needs to be deployed in ITG environment
+
+- name: ITG_Approvers_SMTP_Mail_Ids
+  type: string
+  default: 'vinothkumar.chennaiyan@hp.com'
+  displayName: Email Ids for SMTP custom mail notification in ITG environment 
+
+- name: UAT_Sign_Off_SMTP_Mail_Ids
+  type: string
+  default: 'vinothkumar.chennaiyan@hp.com'
+  displayName: Email Ids for MTP process initilisation
+
+- name: Developer_Mail_Id
+  type: string
+  default: 'singaraja@hp.com'
+  displayName: Email Id for Developer
+
+- name: ROC_Mail_Id
+  type: string
+  default: 'rpafinancefls@hp.com'
+  displayName: Email Id for ROC for relaese pipeline
+
+- name: SMTP_Mail_ID
+  type: string
+  default: '1.rocassistantbotrpabot@hp.com'
+  displayName: Email Id for sending SMTP mail
+
+- name: ITG_Environment_Name
+  type: string
+  default: '01914_APJ_OrderBacklogManagement_ITG'
+  displayName: ITG Deployment approver environment 
+
+- name: Scrum_Master_Environment_Name
+  type: string
+  default: '01914_APJ_OrderBacklogManagement_Scrum_Master'
+  displayName: Scrum Master approver environment 
+
+
+stages:
+
+
+
+  - stage: Build
+    displayName: Build Package
+    jobs: 
+    - job: BuildPackage
+
+      steps:
+      - task: UiPathPack@2
+        inputs:
+          versionType: 'ManualVersion'
+          version: '$(VersionNo)'
+          projectJsonPath: '$(Build.SourcesDirectory)'
+          outputType: 'Process'
+          orchestratorConnection: '${{ parameters.DevOrchestratorConnectionString }}'
+          outputPath: '${{ parameters.PackageSavedPath }}'
+      - publish: '${{ parameters.PackageSavedPath }}'
+        artifact: drop
+
+
+  - stage: DeploytoDEV 
+    displayName: Deploy  Package to DEV orchestrator
+    dependsOn: Build
+    condition: succeeded()
+    jobs:
+      - job: deployDEV
+        displayName: Deploy package to DEV Orchestrator
+        steps:
+            - task: UiPathDeploy@2
+              inputs:
+                 orchestratorConnection: '${{ parameters.DevOrchestratorConnectionString }}'
+                 packagesPath: '${{ parameters.PackageSavedPath }}${{ parameters.ProcessName }}.$(VersionNo).nupkg'
+                 folderName: '${{ parameters.DevOrchestratorFolderName }}'
+
+
+  - stage: AssetInDEV 
+    displayName: Create Assests In DEV
+    dependsOn: DeploytoDEV
+    condition: succeeded()
+    jobs:
+      - job: CreateAssestsInDEV
+        steps:
+        - task: UiPathAssets@2
+          inputs:
+            orchestratorConnection: '${{ parameters.DevOrchestratorConnectionString }}'
+            folderName: '${{ parameters.DevOrchestratorFolderName }}'
+            assetActionType: 'Deploy'
+            csvFile: '$(Build.SourcesDirectory)\Data\Assets-Dev.csv'
+
+
+  - stage: SendNotificationMail_For_ITG_Deploy
+    displayName: SendSMTP Mail for ITG deploy approval
+    dependsOn: AssetInDEV
+    condition: succeeded()
+    jobs: 
+    - job: SendNotificationMail_For_ITG_ITG_Deploy
+      steps:
+      - task: SendEmail@1
+        inputs:
+          To: '${{ parameters.ITG_Approvers_SMTP_Mail_Ids }}'
+          CC: '${{ parameters.Developer_Mail_Id }}'
+          From: '${{ parameters.SMTP_Mail_ID }}'
+          Subject: 'CICD ${{ parameters.ProcessName }} Process ITG Deployment  Notification'
+          Body: 'Hi Team, <br></br> <br>Please find Process with package version and Build Number to approve ITG Deployment, Process_With_Version: <b>${{ parameters.ProcessName }}.$(VersionNo).nupkg </b> and BuildNo: <b> $(Build.BuildNumber) </b> </br><br></br> Regards<br>UIPATH CICD</br>'
+          BodyAsHtml: true
+          AddAttachment: false
+          SmtpServer: 'smtp3.hp.com'
+          SmtpPort: '25'
+          UseSSL: false
+
+  - stage: deployInITG 
+    displayName: deploy build artifact to ITG
+    dependsOn: SendNotificationMail_For_ITG_Deploy
+    condition: succeeded()
+    jobs:
+      - deployment: deployITG
+        displayName: Deploy package to ITG Orchestrator
+        environment: ${{ parameters.ITG_Environment_Name }}
+        strategy:
+         runOnce:
+          deploy:
+           steps:
+            - task: UiPathDeploy@2
+              inputs:
+                 orchestratorConnection: '${{ parameters.ITGOrchestratorConnectionString }}'
+                 packagesPath: '${{ parameters.PackageSavedPath }}${{ parameters.ProcessName }}.$(VersionNo).nupkg'
+                 folderName: '${{ parameters.ITGOrchestratorFolderName }}'
+                 entryPoints: 'Main.xaml'
+
+  - stage: AssetInITG
+    displayName: Create Assests In ITG
+    dependsOn: deployInITG
+    condition: succeeded()
+    jobs:
+      - job: CreateAssestsInITG
+        steps:
+        - task: UiPathAssets@2
+          inputs:
+            orchestratorConnection: '${{ parameters.ITGOrchestratorConnectionString }}'
+            folderName: ${{ parameters.ITGOrchestratorFolderName }}
+            assetActionType: 'Deploy'
+            csvFile: '$(Build.SourcesDirectory)\Data\Assets-ITG.csv'
+  
+  - stage: SendNotificationMail_For_ITG_UAT_SignOff
+    displayName: SendSMTP Mail for ITG UAT sign Off
+    dependsOn: AssetInITG
+    condition: succeeded()
+    jobs: 
+    - job: SendNotificationMail_For_ITG_UAT_SignOff
+      steps:
+      - task: SendEmail@1
+        inputs:
+          To: '${{ parameters.UAT_Sign_Off_SMTP_Mail_Ids }}'
+          CC: '${{ parameters.Developer_Mail_Id }}'
+          From: '${{ parameters.SMTP_Mail_ID }}'
+          Subject: 'CICD ${{ parameters.ProcessName }} Process   UAT SignOff  Notification'
+          Body: 'Hi Team, <br></br> <br>Please find Process with package version and Build Number to UAT Sign off , Project_Version: <b>${{ parameters.ProcessName }}.$(VersionNo).nupkg </b> and BuildNo: <b> $(Build.BuildNumber) </b> </br><br></br> Regards<br>UIPATH CICD</br>'
+          BodyAsHtml: true
+          AddAttachment: false
+          SmtpServer: 'smtp3.hp.com'
+          SmtpPort: '25'
+          UseSSL: false
+  
+  - stage: UAT_Sign_Off_Stage
+    displayName: UAT Sign off in ITG
+    dependsOn: SendNotificationMail_For_ITG_UAT_SignOff
+    condition: succeeded()
+    jobs:
+      - deployment: UAT_Sign_Off
+        displayName: UAT Sign off in ITG
+        environment: ${{ parameters.Scrum_Master_Environment_Name }}
+
+  - stage: SendNotificationMail_For_Create_Release_pipeline
+    displayName: SendSMTP Mail for Create Release pipeline
+    dependsOn: UAT_Sign_Off_Stage
+    condition: succeeded()
+    jobs: 
+    - job: SendNotificationMail_For_Create_Release_pipeline
+      steps:
+      - task: SendEmail@1
+        inputs:
+          To: '${{ parameters.ROC_Mail_Id }}'
+          CC: '${{ parameters.Developer_Mail_Id }}'
+          From: '${{ parameters.SMTP_Mail_ID }}'
+          Subject: 'CICD ${{ parameters.ProcessName }} Process to create release pipeline in PROD '
+          Body: 'Hi Team, <br></br> <br><b>${{ parameters.ProcessName }} Process is approved in ITG and ready for relaese pipeline and please find the approved package version and Build Number to create release pipeline , Project_Version: <b>${{ parameters.ProcessName }}.$(VersionNo).nupkg </b> and BuildNo: <b> $(Build.BuildNumber) </b> </br><br></br> Regards<br>UIPATH CICD</br>'
+          BodyAsHtml: true
+          AddAttachment: false
+          SmtpServer: 'smtp3.hp.com'
+          SmtpPort: '25'
+          UseSSL: false
+
+  - stage: DeleteAssetFile
+    displayName: delete PROD Asset File in the shared location
+    dependsOn: SendNotificationMail_For_Create_Release_pipeline
+    condition: succeeded()
+    jobs:
+      - job: DeleteAssetFile
+
+        steps:
+        - task: DeleteFiles@1
+          inputs:
+            SourceFolder: '${{ parameters.PROD_Asset_SavedPath }}'
+            Contents: 'Assets-PRD.csv'
+
+
+  - stage: CopyPRODAssetFile
+    displayName: Copy PROD Asset File to shared location
+    dependsOn: DeleteAssetFile
+    condition: succeeded()
+    jobs:
+      - job: CopyPRODAssetFile
+
+        steps:
+        - task: CopyFiles@2
+          inputs:
+            SourceFolder: '$(Build.SourcesDirectory)\Data'
+            Contents: 'Assets-PRD.csv'
+            TargetFolder: '${{ parameters.PROD_Asset_SavedPath }}'
+

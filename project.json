@@ -1,0 +1,101 @@
+{
+  "name": "APJ_OrderBacklogManagement",
+  "projectId": "c2fc499b-d4f6-4ec5-93e5-358efa38fe74",
+  "description": "APJ - Order Backlog Management",
+  "main": "Main.xaml",
+  "dependencies": {
+    "BeyondTrust_Library": "[1.0.2]",
+    "CustomSharepointActivities": "[15.0.34]",
+    "HP_Modern_Auth": "[4.0.8041.16424]",
+    "HP.IAF.SharePoint.Document.Activities": "[2.3.2]",
+    "HP.ModernAuthLibraray": "[3.0.3]",
+    "HP.OAuth.Activities": "[6.0.3]",
+    "HP.RPA.TrustedSiteSetUp": "[1.0.2]",
+    "Microsoft.Activities.Extensions": "[2.0.6.9]",
+    "UiPath.Excel.Activities": "[2.11.4]",
+    "UiPath.Mail.Activities": "[1.18.2]",
+    "UiPath.System.Activities": "[23.4.2]",
+    "UiPath.UIAutomation.Activities": "[22.10.7]"
+  },
+  "webServices": [],
+  "entitiesStores": [],
+  "schemaVersion": "4.0",
+  "studioVersion": "20.4.1.0",
+  "projectVersion": "1.0.70",
+  "runtimeOptions": {
+    "autoDispose": false,
+    "netFrameworkLazyLoading": false,
+    "isPausable": true,
+    "isAttended": false,
+    "requiresUserInteraction": true,
+    "supportsPersistence": false,
+    "workflowSerialization": "DataContract",
+    "excludedLoggedData": [
+      "Private:*",
+      "*password*"
+    ],
+    "executionType": "Workflow",
+    "readyForPiP": false,
+    "startsInPiP": false,
+    "mustRestoreAllDependencies": false,
+    "pipType": "ChildSession"
+  },
+  "designOptions": {
+    "projectProfile": "Developement",
+    "outputType": "Process",
+    "libraryOptions": {
+      "includeOriginalXaml": false,
+      "privateWorkflows": []
+    },
+    "processOptions": {
+      "ignoredFiles": [
+        "Data/~%24Config%20-%20DEV%20UAT.xlsx"
+      ]
+    },
+    "fileInfoCollection": [],
+    "saveToCloud": false
+  },
+  "arguments": {
+    "input": [
+      {
+        "name": "In_Orchestrator_Queue_Name",
+        "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "required": false,
+        "hasDefault": false
+      },
+      {
+        "name": "In_Robot_Environment_Is_Production",
+        "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "required": false,
+        "hasDefault": true
+      }
+    ],
+    "output": []
+  },
+  "expressionLanguage": "VisualBasic",
+  "entryPoints": [
+    {
+      "filePath": "Main.xaml",
+      "uniqueId": "1cb37c95-f43a-4364-92bd-11018b60f339",
+      "input": [
+        {
+          "name": "In_Orchestrator_Queue_Name",
+          "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+          "required": false,
+          "hasDefault": false
+        },
+        {
+          "name": "In_Robot_Environment_Is_Production",
+          "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+          "required": false,
+          "hasDefault": true
+        }
+      ],
+      "output": []
+    }
+  ],
+  "isTemplate": false,
+  "templateProjectData": {},
+  "publishData": {},
+  "targetFramework": "Windows"
+}

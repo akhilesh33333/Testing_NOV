@@ -1,0 +1,27 @@
+name,type,value
+APJ_ORDER BACKLOG MANAGEMENT_WORKER_applicationException_To,Text,singaraja@hp.com;vinothkumar.chennaiyan@hp.com
+APJ_ORDER BACKLOG MANAGEMENT_WORKER_Directory_OrderSummaryReport,Text,C:\Temp\RPA\Order Backlog Management\OSR
+APJ_ORDER BACKLOG MANAGEMENT_WORKER_Filename_OrderSummaryReport,Text,{{{Date}}}_Order Summary Report_{{{OrderState}}}.csv
+APJ_ORDER BACKLOG MANAGEMENT_WORKER_Filepath_RawOrderSummaryReport,Text,C:\Users\{{{UserName}}}\Downloads\AU-order-summary-report.csv
+APJ_ORDER BACKLOG MANAGEMENT_WORKER_initException_To,Text,singaraja@hp.com;vinothkumar.chennaiyan@hp.com
+APJ_ORDER BACKLOG MANAGEMENT_WORKER_Mail_Body_Abandoned,Text,"Hello team,<br><br>Please find the list of ABANDONED orders as of this day due to non-payment. You may call back customers to salvage sales and assist them to log a new order.<br><br><table class=""tableData"" border=""1"" border-collapse=""collapse"" width=""100%"" height=""100%""><tr><th>Ord ID</th><th>Ord Dt</th><th>ISR ID</th>{{{TableContents}}}</tr></table>"
+APJ_ORDER BACKLOG MANAGEMENT_WORKER_Mail_CC_Abandoned,Text,vinothkumar.chennaiyan@hp.com;singaraja@hp.com
+APJ_ORDER BACKLOG MANAGEMENT_WORKER_Mail_Subject_Abandoned,Text,[RPA] Magento Abandoned Orders
+APJ_ORDER BACKLOG MANAGEMENT_WORKER_Mail_To_Abandoned,Text,singaraja@hp.com;vinothkumar.chennaiyan@hp.com
+APJ_ORDER BACKLOG MANAGEMENT_WORKER_robotExecutionSummary_To,Text,singaraja@hp.com;vinothkumar.chennaiyan@hp.com
+APJ_ORDER BACKLOG MANAGEMENT_WORKER_SharePoint_FolderName,Text,Documents/AU Magento Reports
+APJ_ORDER BACKLOG MANAGEMENT_WORKER_SharePoint_TeamName,Text,TeamAUOps
+APJ_ORDER BACKLOG MANAGEMENT_WORKER_SharePoint_URL,Text,https://hp.sharepoint.com
+APJ_ORDER BACKLOG MANAGEMENT_WORKER_URL_Magento,Text,https://store.hp.com/au-en/hp_ols_admin/
+APJ_ORDER BACKLOG MANAGEMENT_WORKER_URL_OrderSummaryReport,Text,https://store.hp.com/au-en/hp_ols_admin/hpols_report/ordersummary/index/
+APJ_ORDER BACKLOG MANAGEMENT_WORKER_sharedLibrary_Directory,Text,Test
+APJ_ORDER BACKLOG MANAGEMENT_WORKER_robotExecutionSummary_Subject,Text,[RPA] Robot Execution Summary - APJ_ORDER BACKLOG MANAGEMENT_WORKER
+APJ_ORDER BACKLOG MANAGEMENT_WORKER_robotExecutionSummary_RobotName,Text,APJ_ORDER BACKLOG MANAGEMENT_WORKER
+APJ_ORDER BACKLOG MANAGEMENT_WORKER_processLibrary_Directory,Text,Test
+APJ_ORDER BACKLOG MANAGEMENT_WORKER_Mail_EmailType_Notification,Text,Notification
+APJ_ORDER BACKLOG MANAGEMENT_WORKER_Mail_EmailType_BusinessError,Text,Business Error Encountered
+APJ_ORDER BACKLOG MANAGEMENT_WORKER_Mail_BGColor_Notification,Text,1d5391
+APJ_ORDER BACKLOG MANAGEMENT_WORKER_Mail_BGColor_BusinessError,Text,edc039
+APJ_ORDER BACKLOG MANAGEMENT_WORKER_initException_Subject,Text,[RPA] InitException - APJ_ORDER BACKLOG MANAGEMENT_WORKER
+APJ_ORDER BACKLOG MANAGEMENT_WORKER_initException_MaxRetry,Text,2
+APJ_ORDER BACKLOG MANAGEMENT_WORKER_applicationException_Subject,Text,[RPA] ApplicationException - APJ_ORDER BACKLOG MANAGEMENT_WORKER

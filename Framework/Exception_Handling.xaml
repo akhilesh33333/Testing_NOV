@@ -1,0 +1,162 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Exception_Handling" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:maes="clr-namespace:Microsoft.Activities.Extensions.Statements;assembly=Microsoft.Activities.Extensions" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_Exception" Type="InArgument(s:Exception)" />
+    <x:Property Name="in_ScreenshotFolder" Type="InArgument(x:String)" />
+    <x:Property Name="in_ExceptionLogFilePath" Type="InArgument(x:String)" />
+    <x:Property Name="in_Server" Type="InArgument(x:String)" />
+    <x:Property Name="in_Port" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_MailAccount" Type="InArgument(x:String)" />
+    <x:Property Name="in_MailSubject" Type="InArgument(x:String)" />
+    <x:Property Name="in_MailTo" Type="InArgument(x:String)" />
+    <x:Property Name="in_MailLogonUser" Type="InArgument(x:String)" />
+    <x:Property Name="in_MailLogonPass" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>490.666666666667,2179.66666666667</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Exception_Handling_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="42">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Reflection</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>OfficeDevPnP.Core</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Exception_Handling" sap:VirtualizedContainerService.HintSize="500.666666666667,2154.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Name="placeholders" />
+      <Variable x:TypeArguments="x:String" Name="screenshot_Filepath" />
+      <Variable x:TypeArguments="scg:List(x:String)" Default="[new List(Of String)]" Name="attachments" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log message 1" sap:VirtualizedContainerService.HintSize="438.666666666667,96" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;STARTED - Exception_Handling&quot;]" />
+    <TryCatch sap2010:Annotation.AnnotationText="Take a screenshot of the current state of the screen to facilitate debugging." DisplayName="Try Take Screenshot" sap:VirtualizedContainerService.HintSize="438.666666666667,385.333333333333" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <TryCatch.Try>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TakeScreenshot workflow" sap:VirtualizedContainerService.HintSize="334,115.333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Framework\TakeScreenshot.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_Folder">[In_ScreenshotFolder]</InArgument>
+            <InOutArgument x:TypeArguments="x:String" x:Key="io_FilePath">[screenshot_Filepath]</InOutArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404.666666666667,22" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <ui:LogMessage DisplayName="Log Message 2" sap:VirtualizedContainerService.HintSize="334,96" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Warn" Message="[&quot;TakeScreenshot failed with message [&quot; + exception.Message + &quot;] at Source [&quot; + exception.Source + &quot;]&quot;]" />
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+    <Assign DisplayName="Assign 3" sap:VirtualizedContainerService.HintSize="438.666666666667,63.3333333333333" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[placeholders]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[new Dictionary(Of String, String)]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <maes:AddToDictionary x:TypeArguments="x:String, x:String" Dictionary="[placeholders]" DisplayName="Add to dictionary 4" sap:VirtualizedContainerService.HintSize="438.666666666667,145.333333333333" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_1" Key="ExceptionType" Value="[In_Exception.GetType.ToString]" />
+    <maes:AddToDictionary x:TypeArguments="x:String, x:String" Dictionary="[placeholders]" DisplayName="Add to dictionary 5" sap:VirtualizedContainerService.HintSize="438.666666666667,145.333333333333" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_2" Key="RobotMachine" Value="[Environment.MachineName]" />
+    <maes:AddToDictionary x:TypeArguments="x:String, x:String" Dictionary="[placeholders]" DisplayName="Add to dictionary 6" sap:VirtualizedContainerService.HintSize="438.666666666667,145.333333333333" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_3" Key="ExceptionMessage" Value="[In_Exception.Message]" />
+    <maes:AddToDictionary x:TypeArguments="x:String, x:String" Dictionary="[placeholders]" DisplayName="Add to dictionary 7" sap:VirtualizedContainerService.HintSize="438.666666666667,145.333333333333" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_4" Key="ExceptionSource" Value="[In_Exception.Source]" />
+    <maes:AddToDictionary x:TypeArguments="x:String, x:String" Dictionary="[placeholders]" DisplayName="Add to dictionary 8" sap:VirtualizedContainerService.HintSize="438.666666666667,145.333333333333" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_5" Key="ExceptionStackTrace" Value="[In_Exception.StackTrace]" />
+    <AddToCollection x:TypeArguments="x:String" Collection="[attachments]" DisplayName="Add To Collection 9" sap:VirtualizedContainerService.HintSize="438.666666666667,25.3333333333333" sap2010:WorkflowViewState.IdRef="AddToCollection`1_1" Item="[screenshot_Filepath]" />
+    <ui:LogMessage DisplayName="Log Message 10" sap:VirtualizedContainerService.HintSize="438.666666666667,96" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Sending [&quot; + In_Exception.GetType.ToString + &quot;] email to [&quot; + in_MailTo + &quot;]&quot;]" />
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Mail_Send_With_Placeholders_SMTP workflow" sap:VirtualizedContainerService.HintSize="438.666666666667,115.333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Framework\Mail_Send_With_Placeholders_SMTP.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="In_Mail_Template">Email_Template\Exception.html</InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="In_Placeholders">[placeholders]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="In_PlaceholderSuffix">}}}</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="In_PlaceholderPrefix">{{{</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="In_Mail_Account">[in_MailAccount]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="In_Mail_Subject">[in_MailSubject]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="In_Mail_To">[in_MailTo]</InArgument>
+        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="In_Attachments">[attachments]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="In_Mail_CC">[Nothing]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="In_Server">[In_Server]</InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="In_Port">[In_Port]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:LogMessage DisplayName="Log message 11" sap:VirtualizedContainerService.HintSize="438.666666666667,96" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;FINISHED - Exception_Handling&quot;]" />
+  </Sequence>
+</Activity>

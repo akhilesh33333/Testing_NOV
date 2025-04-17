@@ -1,0 +1,170 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Mail_Send_Robot_Execution_Summary" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:maes="clr-namespace:Microsoft.Activities.Extensions.Statements;assembly=Microsoft.Activities.Extensions" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="In_RobotExecution" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="In_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1149.33333333333,2317.33333333333</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Mail_Send_Robot_Execution_Summary_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="42">
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>OfficeDevPnP.Core</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Mail_Send_Robot_Execution_Summary" sap:VirtualizedContainerService.HintSize="496,2252.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Name="placeholders" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log message" sap:VirtualizedContainerService.HintSize="434,96" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;STARTED - Mail_Send_Robot_Execution_Summary&quot;]" />
+    <Assign sap:VirtualizedContainerService.HintSize="434,85.3333333333333" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[placeholders]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[new Dictionary(Of String, String)]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <maes:AddToDictionary x:TypeArguments="x:String, x:String" Dictionary="[placeholders]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="434,145.333333333333" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_1" Key="TotalTransactions" Value="[In_RobotExecution(&quot;TotalTransactions&quot;).ToString]" />
+    <maes:AddToDictionary x:TypeArguments="x:String, x:String" Dictionary="[placeholders]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="434,145.333333333333" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_2" Key="SuccessfulTransactions" Value="[In_RobotExecution(&quot;SuccessfulTransactions&quot;).ToString]" />
+    <maes:AddToDictionary x:TypeArguments="x:String, x:String" Dictionary="[placeholders]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="434,145.333333333333" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_3" Key="BusinessRuleExceptions" Value="[In_RobotExecution(&quot;BusinessRuleExceptions&quot;).ToString]" />
+    <maes:AddToDictionary x:TypeArguments="x:String, x:String" Dictionary="[placeholders]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="434,145.333333333333" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_4" Key="InitExceptions" Value="[In_RobotExecution(&quot;InitExceptions&quot;).ToString]" />
+    <maes:AddToDictionary x:TypeArguments="x:String, x:String" Dictionary="[placeholders]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="434,145.333333333333" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_5" Key="ApplicationExceptions" Value="[In_RobotExecution(&quot;ApplicationExceptions&quot;).ToString]" />
+    <maes:AddToDictionary x:TypeArguments="x:String, x:String" Dictionary="[placeholders]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="434,145.333333333333" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_6" Key="StartTime" Value="[In_RobotExecution(&quot;StartTime&quot;).ToString]" />
+    <maes:AddToDictionary x:TypeArguments="x:String, x:String" Dictionary="[placeholders]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="434,145.333333333333" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_7" Key="EndTime" Value="[In_RobotExecution(&quot;EndTime&quot;).ToString]" />
+    <maes:AddToDictionary x:TypeArguments="x:String, x:String" Dictionary="[placeholders]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="434,145.333333333333" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_8" Key="RobotMachine" Value="[Environment.MachineName]" />
+    <maes:AddToDictionary x:TypeArguments="x:String, x:String" Dictionary="[placeholders]" DisplayName="Add to dictionary" sap:VirtualizedContainerService.HintSize="434,145.333333333333" sap2010:WorkflowViewState.IdRef="AddToDictionary`2_9" Key="RobotName" Value="[In_Config(&quot;robotExecutionSummary_RobotName&quot;).ToString]" />
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Mail_Send_With_Placeholders_SMTP workflow" sap:VirtualizedContainerService.HintSize="434,115.333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Framework\Mail_Send_With_Placeholders_SMTP.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="In_Mail_Template">
+          <Literal x:TypeArguments="x:String">Email_Template\Robot Execution Summary.html</Literal>
+        </InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="In_Placeholders">
+          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:String)" ExpressionText="placeholders" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="In_PlaceholderSuffix">
+          <Literal x:TypeArguments="x:String">}}}</Literal>
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="In_PlaceholderPrefix">
+          <Literal x:TypeArguments="x:String">{{{</Literal>
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="In_Mail_Account">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="In_Config(&quot;mail_Account&quot;).ToString" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="In_Mail_Subject">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="In_Config(&quot;robotExecutionSummary_Subject&quot;).ToString" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="In_Mail_To">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="In_Config(&quot;robotExecutionSummary_To&quot;).ToString" />
+        </InArgument>
+        <InArgument x:TypeArguments="scg:List(x:String)" x:Key="In_Attachments">
+          <mva:VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="Nothing" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="In_Mail_CC">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Nothing" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="In_Server">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="In_Config(&quot;HP_SMTP_Server&quot;).ToString" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="In_Port">
+          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="Cint(In_Config(&quot;HP_SMTP_Port&quot;).ToString)" />
+        </InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="434,25.3333333333333" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="441.333333333333,222.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Mail_Send_With_Placeholders workflow" sap:VirtualizedContainerService.HintSize="379.333333333333,115.333333333333" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Framework\Mail_Send_With_Placeholders.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="In_Mail_Template">Email_Template\Robot Execution Summary.html</InArgument>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="In_Placeholders">[placeholders]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="In_PlaceholderSuffix">}}}</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="In_PlaceholderPrefix">{{{</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="In_Mail_Account">[In_Config("mail_Account").ToString]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="In_Mail_Subject">[In_Config("robotExecutionSummary_Subject").ToString]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="In_Mail_To">[In_Config("robotExecutionSummary_To").ToString]</InArgument>
+              <InArgument x:TypeArguments="scg:List(x:String)" x:Key="In_Attachments">[Nothing]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="In_Mail_CC">[Nothing]</InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+        </Sequence>
+      </ui:CommentOut.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:CommentOut>
+    <ui:LogMessage DisplayName="Log message" sap:VirtualizedContainerService.HintSize="434,96" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;FINISHED - Mail_Send_Robot_Execution_Summary&quot;]" />
+  </Sequence>
+</Activity>
