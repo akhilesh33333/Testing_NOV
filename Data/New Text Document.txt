@@ -1,0 +1,19 @@
+{
+  "serviceDeskId": "26",
+   "requestTypeId": "585",
+   "requestFieldValues": {
+      "summary": "Request to update health screening for JDE",
+      "description": "Order Number",
+      "customfield_10905": {
+         "value": "JDE",
+         "child": {
+                "value": "Sales Order"
+            }
+        }
+    },
+ "requestParticipants": [ "DinhS"]
+}
+
+str_OrderNumber+str_OrderType+str_LineNumber+"|"+str_OrderCompany+row("Order Number").ToString ()+"|\t"+"|"+row("Order Type").ToString ()+"|\t"+"|"+row("Line Number").ToString ()+"|\t"+"|"+row("Order Company").ToString ()+"|\n"
+
+str_OrderCompany+"|"+row("Order Number").ToString ()+"|\t"+"|"+row("Order Type").ToString ()+"|\t"+"|"+row("Line Number").ToString ()+"|\t"+"|"+row("Order Company").ToString ()+"|\n"

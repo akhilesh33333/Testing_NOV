@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="MSRFfmx8H0umcCOLLAJdEQ" Reference="STz-mv9Z0UiO3j9IR7hxUg/RU7k8L1p3UGAmUjg89QsTA" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" BrowserURL="rpachallenge.com" CVScreenId="001162d2-54af-462d-902c-2228a9f1e9c4" CvElementArea="639, 571, 361, 54" CvType="InputBox" DesignTimeRectangle="652, 1216, 551, 68" DesignTimeScaleFactor="1.5" ElementType="InputBox" FullSelectorArgument="&lt;webctrl tag='LABEL' innertext='First Name' /&gt;&lt;nav up='1' /&gt;&lt;webctrl tag='INPUT' /&gt;" Guid="73cc1e9a-4772-4d7c-83ef-2a699f7869c7" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAWYAAABACAYAAAAppN2JAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAALPSURBVHhe7d3rTtRAGIBh7/8iuBCjRFwFFVAQEDnpihx0YTl4hF2T0WoRtnahibT5kj5P8v3phLS/3kwIM9xJAIQizADBCDNAMMIMEIwwAwQjzADBCDNAMMIMEIwwAwQjzADBCDNAMMIMtNZB/yStbrxLT5+/SpOd+Vuf6dmltLa5nfpHp/kbqxFmoJV29g9S58liuvvgWe0z+Wg+7ez18jffTJiB1ukdHqep6RelEa1rHj97+XuHXoUwA62z/PpNaTzrnqXVrfwLrifMQKsMhsNfu9el0nDWPVMzL9L3s/P8S8YTZqBVBoNhaTSbmq/fzvIvGU+YgVbJdsxlwWxqhsMf+ZeMJ8xAqwgzQDDCDBBMk2Hubu+nN93dkWfCDFDQZJizd52dnY88E2aAgibDfOHqM2EGKGgyzCenX1L/+NPIM2EGKCgL8+LKZjo6+ZRWxpwI3Orupg+9ozQzt/zPWnbUev/jYXq7vffPmjADVFAM88LyRr7yx6v17sj6zv7l5UNZVB/OLPxdyy4nunqS70OvP/KzwgxQQTHMxSs5P3/59nctu+ioaPPKX1m83nyXP72U7aAv1oUZoIL/2TEP7JgBbt91v2Med+uc3zED1KgszHWNMANU0GSYL1x9JswABU2GOXuXk38AN2gyzO7KAKigyTCXjTADFAgzQDDCDBDM+fmgNJhNjf/5B1AiO2pdFs26597DOTtmgDIra29Lw1n3ZCcLqxBmoHUO+ifpfmeuNJ51TXbHRnYKsAphBlppZ6+XpmeXSiN629N5spje715ehnQTYQZaK7vyc3W9+zvQk535W59sl7y60U3Hp5/zN1YjzADBCDNAMMIMEIwwAwQjzADBCDNAMMIMEIwwAwQjzADBCDNAMMIMEIwwAwQjzADBCDNAMMIMEIwwAwQjzADBCDNAMNeGeWJiwhhjTMNjxwwQjDADBCPMAKGk9BMlgqmaRTEN/gAAAABJRU5ErkJggg==" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Rpa Challenge' /&gt;" SearchSteps="Selector, Image, CV" Version="V5" Visibility="Interactive">
+      <TargetAnchorable.Anchors>
+        <scg:List x:TypeArguments="ITarget" Capacity="4">
+          <Target CVScreenId="42efcc43-78a8-4205-95da-2dee330d5b63" CvTextArea="644, 530, 97, 18" CvTextArgument="First Name" CvType="Text" DesignTimeRectangle="652, 1187, 95, 25" ElementType="Text" FuzzySelectorArgument="&lt;webctrl aaname='First Name' tag='LABEL' type='' class='' check:innerText='First Name' /&gt;" Guid="50af4c4b-75ac-4063-ada6-34a5940be2f2" SearchSteps="FuzzySelector, CV" />
+        </scg:List>
+      </TargetAnchorable.Anchors>
+      <imageRef attrName="InformativeScreenshot" originalValue="dabe47c17efa1e2918d8ea27034eba48.png" xmlns="">0FlzHLNNvekWJYoQmtXZasA</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">None</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>
